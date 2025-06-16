@@ -1,0 +1,2237 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "source": [
+        "#Data Acquisition Case Study"
+      ],
+      "metadata": {
+        "id": "6aRvzWzbhcnp"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Q1. Write Python code to create a new file named \"sample_data.txt\" in your documents folder and write the following content to it\n",
+        "\n",
+        "ICTAK\n",
+        "\n",
+        "Thejaswini,\n",
+        "\n",
+        "Technopark Rd,\n",
+        "\n",
+        "Technopark Campus,\n",
+        "\n",
+        "Thiruvananthapuram,\n",
+        "\n",
+        "Kerala 695581"
+      ],
+      "metadata": {
+        "id": "734JDyUNq8fH"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "file_path = \"sample_data.txt\"\n",
+        "\n",
+        "\n",
+        "content = \"\"\"ICTAK\n",
+        "\n",
+        "Thejaswini,\n",
+        "\n",
+        "Technopark Rd,\n",
+        "\n",
+        "Technopark Campus,\n",
+        "\n",
+        "Thiruvananthapuram,\n",
+        "\n",
+        "Kerala 695581\"\"\"\n",
+        "\n",
+        "with open(file_path, \"w\") as file:\n",
+        "    file.write(content)\n",
+        "\n",
+        "print(f\"File created at: {file_path}\")\n"
+      ],
+      "metadata": {
+        "id": "ieKhqBr-nl7s",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 0
+        },
+        "outputId": "e4a9a0a1-4b15-43cc-b788-84874a9c2675"
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "File created at: sample_data.txt\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Q2. Write Python code to read and print the contents in \"sample_data.txt\""
+      ],
+      "metadata": {
+        "id": "aJ6hQOJpimNv"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "with open(\"sample_data.txt\", \"r\") as file:\n",
+        "    content = file.read()\n",
+        "\n",
+        "print(\"Contents of sample_data.txt:\\n\")\n",
+        "print(content)"
+      ],
+      "metadata": {
+        "id": "vRnilPQgnrPG",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 0
+        },
+        "outputId": "dba6ea08-b754-4597-eba5-717e54b8b369"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Contents of sample_data.txt:\n",
+            "\n",
+            "ICTAK\n",
+            "\n",
+            "Thejaswini,\n",
+            "\n",
+            "Technopark Rd,\n",
+            "\n",
+            "Technopark Campus,\n",
+            "\n",
+            "Thiruvananthapuram,\n",
+            "\n",
+            "Kerala 695581\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Q3. Write Python code to check if \"sample_data.txt\" exists in documents folder"
+      ],
+      "metadata": {
+        "id": "9aHquDcErda-"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "if os.path.exists(\"sample_data.txt\"):\n",
+        "    print(\"sample_data.txt exists in the current directory.\")\n",
+        "else:\n",
+        "    print(\"sample_data.txt does NOT exist in the current directory.\")\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "vY5TEsxunsKh",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 0
+        },
+        "outputId": "e84b330c-60ac-48e2-8b74-ef55ada3eb50"
+      },
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "sample_data.txt exists in the current directory.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Q4: Save the following dataframe content to a CSV file (data.csv) in your downloads folder"
+      ],
+      "metadata": {
+        "id": "BCWITkmopblI"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "r3THwBOGpP9F"
+      },
+      "outputs": [],
+      "source": [
+        "import pandas as pd\n",
+        "\n",
+        "data = {\"Id\": [1, 2, 3],\n",
+        "        \"Name\": [\"Alice\", \"Bob\", \"Charlie\"],\n",
+        "        \"Subject\": [\"Science\", \"Maths\", \"History\"]}\n",
+        "df = pd.DataFrame(data)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd\n",
+        "import os\n",
+        "\n",
+        "\n",
+        "data = {\n",
+        "    \"Id\": [1, 2, 3],\n",
+        "    \"Name\": [\"Alice\", \"Bob\", \"Charlie\"],\n",
+        "    \"Subject\": [\"Science\", \"Maths\", \"History\"]\n",
+        "}\n",
+        "\n",
+        "df = pd.DataFrame(data)\n",
+        "\n",
+        "downloads_folder = os.path.join(os.path.expanduser(\"~\"), \"Downloads\")\n",
+        "os.makedirs(downloads_folder, exist_ok=True)\n",
+        "\n",
+        "\n",
+        "file_path = os.path.join(downloads_folder, \"data.csv\")\n",
+        "\n",
+        "\n",
+        "df.to_csv(file_path, index=False)\n",
+        "\n",
+        "print(f\"data.csv successfully saved to: {file_path}\")\n"
+      ],
+      "metadata": {
+        "id": "Joc7XafnntaG",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 0
+        },
+        "outputId": "89723161-889f-456e-d4b3-99665604c797"
+      },
+      "execution_count": 9,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "data.csv successfully saved to: /root/Downloads/data.csv\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Q5: Save the above dataframe content to an Excel (data.xlsx, sheet name: Sheet1) file in your documents folder"
+      ],
+      "metadata": {
+        "id": "VF0nJjGElq0A"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd\n",
+        "import os\n",
+        "\n",
+        "\n",
+        "data = {\n",
+        "    \"Id\": [1, 2, 3],\n",
+        "    \"Name\": [\"Alice\", \"Bob\", \"Charlie\"],\n",
+        "    \"Subject\": [\"Science\", \"Maths\", \"History\"]\n",
+        "}\n",
+        "df = pd.DataFrame(data)\n",
+        "\n",
+        "r\n",
+        "documents_folder = os.path.join(os.path.expanduser(\"~\"), \"Documents\")\n",
+        "os.makedirs(documents_folder, exist_ok=True)\n",
+        "\n",
+        "\n",
+        "file_path = os.path.join(documents_folder, \"data.xlsx\")\n",
+        "\n",
+        "\n",
+        "df.to_excel(file_path, index=False, sheet_name=\"Sheet1\")\n",
+        "\n",
+        "print(f\"Excel file successfully saved to: {file_path}\")\n"
+      ],
+      "metadata": {
+        "id": "ZtOFb7ZJnu1m",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 0
+        },
+        "outputId": "3f1d433a-dc01-4b91-fc47-6018e3a3fb83"
+      },
+      "execution_count": 10,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Excel file successfully saved to: /root/Documents/data.xlsx\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Q6. Write code to get the list of files in your Downloads folder and save it to a CSV file name \"download_list.csv\""
+      ],
+      "metadata": {
+        "id": "amF6kxMQmdgF"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import os\n",
+        "import pandas as pd\n",
+        "\n",
+        "\n",
+        "downloads_folder = os.path.join(os.path.expanduser(\"~\"), \"Downloads\")\n",
+        "\n",
+        "\n",
+        "file_list = [f for f in os.listdir(downloads_folder) if os.path.isfile(os.path.join(downloads_folder, f))]\n",
+        "\n",
+        "df = pd.DataFrame(file_list, columns=[\"File Name\"])\n",
+        "\n",
+        "\n",
+        "csv_path = os.path.join(downloads_folder, \"download_list.csv\")\n",
+        "df.to_csv(csv_path, index=False)\n",
+        "\n",
+        "print(f\"List of files saved to: {csv_path}\")\n"
+      ],
+      "metadata": {
+        "id": "nVP86z3dnvwz",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 0
+        },
+        "outputId": "39cddbad-c721-4b75-bdc8-f859304f9169"
+      },
+      "execution_count": 11,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "List of files saved to: /root/Downloads/download_list.csv\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Q7. Write Python code to save the contents of the given random_array variable as a numpy file"
+      ],
+      "metadata": {
+        "id": "vR7I4R5bnV2w"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "random_array = np.random.rand(10, 10)"
+      ],
+      "metadata": {
+        "id": "vHXYRxnDnJzA"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "\n",
+        "\n",
+        "random_array = np.random.rand(10, 10)\n",
+        "\n",
+        "\n",
+        "np.save(\"random_array.npy\", random_array)\n",
+        "\n",
+        "print(\"random_array.npy file has been saved successfully.\")\n"
+      ],
+      "metadata": {
+        "id": "ihhSKJF9n3NP",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "acaab7c5-6455-400c-d7d7-601c86f0ebf3"
+      },
+      "execution_count": 30,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "random_array.npy file has been saved successfully.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Q8. Write python code to save the contents of the above numpy file as text file named \"random.txt\" with a delimitter of \";\" to Documents folder"
+      ],
+      "metadata": {
+        "id": "V7XfHgGAzNIl"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "import os\n",
+        "\n",
+        "random_array = np.load(\"random_array.npy\")\n",
+        "\n",
+        "documents_folder = os.path.join(os.path.expanduser(\"~\"), \"Documents\")\n",
+        "os.makedirs(documents_folder, exist_ok=True)\n",
+        "\n",
+        "\n",
+        "text_file_path = os.path.join(documents_folder, \"random.txt\")\n",
+        "\n",
+        "np.savetxt(text_file_path, random_array, delimiter=\";\", fmt=\"%.4f\")\n",
+        "\n",
+        "print(f\"Array successfully saved to: {text_file_path}\")\n"
+      ],
+      "metadata": {
+        "id": "Du3LRbaKbpeg",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "6ed43303-12ee-48e9-c6b0-579990ea0c8f"
+      },
+      "execution_count": 31,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Array successfully saved to: /root/Documents/random.txt\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Download and analyze Bike Sharing Dataset (hour.csv) for UCI Irvin Repository (https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset) and answer the following questions"
+      ],
+      "metadata": {
+        "id": "nJSaX0Rg151y"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import urllib.request\n",
+        "import zipfile\n",
+        "\n",
+        "url = \"http://archive.ics.uci.edu/ml/machine-learning-databases/00275/Bike-Sharing-Dataset.zip\"\n",
+        "filename = \"Bike-Sharing-Dataset.zip\"\n",
+        "\n",
+        "urllib.request.urlretrieve(url, filename)\n",
+        "\n",
+        "\n",
+        "with zipfile.ZipFile(filename, 'r') as zip_ref:\n",
+        "    zip_ref.extractall()\n",
+        "\n",
+        "print(\"Dataset downloaded and extracted.\")\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 0
+        },
+        "id": "w4ldtzrIrvYa",
+        "outputId": "4b44c826-ed30-4a3f-82dd-1a023f003a58"
+      },
+      "execution_count": 14,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Dataset downloaded and extracted.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import os\n",
+        "\n",
+        "os.listdir()\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "RYxWGMPMsNfp",
+        "outputId": "c410229c-b563-4ac0-8432-4371512cb753"
+      },
+      "execution_count": 32,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "['.config',\n",
+              " 'random_array.npy',\n",
+              " 'day.csv',\n",
+              " 'sample_data.txt',\n",
+              " 'Bike-Sharing-Dataset.zip',\n",
+              " 'Readme.txt',\n",
+              " 'hour.csv',\n",
+              " 'sample_data']"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 32
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Q9. What is the size of the dataset? (Number of rows and columns)\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "-wt4mxq32U6H"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd\n",
+        "\n",
+        "\n",
+        "df = pd.read_csv(\"hour.csv\")\n",
+        "\n",
+        "\n",
+        "rows, columns = df.shape\n",
+        "print(f\"Number of rows: {rows}\")\n",
+        "print(f\"Number of columns: {columns}\")\n",
+        "\n",
+        "df.head()\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "Pj0I0JhF2EEg",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 241
+        },
+        "outputId": "832b1e41-58d4-4ea9-d5c4-d5892a7a14dd"
+      },
+      "execution_count": 19,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Number of rows: 17379\n",
+            "Number of columns: 17\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "   instant      dteday  season  yr  mnth  hr  holiday  weekday  workingday  \\\n",
+              "0        1  2011-01-01       1   0     1   0        0        6           0   \n",
+              "1        2  2011-01-01       1   0     1   1        0        6           0   \n",
+              "2        3  2011-01-01       1   0     1   2        0        6           0   \n",
+              "3        4  2011-01-01       1   0     1   3        0        6           0   \n",
+              "4        5  2011-01-01       1   0     1   4        0        6           0   \n",
+              "\n",
+              "   weathersit  temp   atemp   hum  windspeed  casual  registered  cnt  \n",
+              "0           1  0.24  0.2879  0.81        0.0       3          13   16  \n",
+              "1           1  0.22  0.2727  0.80        0.0       8          32   40  \n",
+              "2           1  0.22  0.2727  0.80        0.0       5          27   32  \n",
+              "3           1  0.24  0.2879  0.75        0.0       3          10   13  \n",
+              "4           1  0.24  0.2879  0.75        0.0       0           1    1  "
+            ],
+            "text/html": [
+              "\n",
+              "  <div id=\"df-62f42d08-1aa4-4900-8f62-0d64d112d9db\" class=\"colab-df-container\">\n",
+              "    <div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>instant</th>\n",
+              "      <th>dteday</th>\n",
+              "      <th>season</th>\n",
+              "      <th>yr</th>\n",
+              "      <th>mnth</th>\n",
+              "      <th>hr</th>\n",
+              "      <th>holiday</th>\n",
+              "      <th>weekday</th>\n",
+              "      <th>workingday</th>\n",
+              "      <th>weathersit</th>\n",
+              "      <th>temp</th>\n",
+              "      <th>atemp</th>\n",
+              "      <th>hum</th>\n",
+              "      <th>windspeed</th>\n",
+              "      <th>casual</th>\n",
+              "      <th>registered</th>\n",
+              "      <th>cnt</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>1</td>\n",
+              "      <td>2011-01-01</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>6</td>\n",
+              "      <td>0</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0.24</td>\n",
+              "      <td>0.2879</td>\n",
+              "      <td>0.81</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>3</td>\n",
+              "      <td>13</td>\n",
+              "      <td>16</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>2</td>\n",
+              "      <td>2011-01-01</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "      <td>6</td>\n",
+              "      <td>0</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0.22</td>\n",
+              "      <td>0.2727</td>\n",
+              "      <td>0.80</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>8</td>\n",
+              "      <td>32</td>\n",
+              "      <td>40</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>3</td>\n",
+              "      <td>2011-01-01</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "      <td>1</td>\n",
+              "      <td>2</td>\n",
+              "      <td>0</td>\n",
+              "      <td>6</td>\n",
+              "      <td>0</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0.22</td>\n",
+              "      <td>0.2727</td>\n",
+              "      <td>0.80</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>5</td>\n",
+              "      <td>27</td>\n",
+              "      <td>32</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>4</td>\n",
+              "      <td>2011-01-01</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "      <td>1</td>\n",
+              "      <td>3</td>\n",
+              "      <td>0</td>\n",
+              "      <td>6</td>\n",
+              "      <td>0</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0.24</td>\n",
+              "      <td>0.2879</td>\n",
+              "      <td>0.75</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>3</td>\n",
+              "      <td>10</td>\n",
+              "      <td>13</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>5</td>\n",
+              "      <td>2011-01-01</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "      <td>1</td>\n",
+              "      <td>4</td>\n",
+              "      <td>0</td>\n",
+              "      <td>6</td>\n",
+              "      <td>0</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0.24</td>\n",
+              "      <td>0.2879</td>\n",
+              "      <td>0.75</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>\n",
+              "    <div class=\"colab-df-buttons\">\n",
+              "\n",
+              "  <div class=\"colab-df-container\">\n",
+              "    <button class=\"colab-df-convert\" onclick=\"convertToInteractive('df-62f42d08-1aa4-4900-8f62-0d64d112d9db')\"\n",
+              "            title=\"Convert this dataframe to an interactive table.\"\n",
+              "            style=\"display:none;\">\n",
+              "\n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewBox=\"0 -960 960 960\">\n",
+              "    <path d=\"M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z\"/>\n",
+              "  </svg>\n",
+              "    </button>\n",
+              "\n",
+              "  <style>\n",
+              "    .colab-df-container {\n",
+              "      display:flex;\n",
+              "      gap: 12px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert {\n",
+              "      background-color: #E8F0FE;\n",
+              "      border: none;\n",
+              "      border-radius: 50%;\n",
+              "      cursor: pointer;\n",
+              "      display: none;\n",
+              "      fill: #1967D2;\n",
+              "      height: 32px;\n",
+              "      padding: 0 0 0 0;\n",
+              "      width: 32px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert:hover {\n",
+              "      background-color: #E2EBFA;\n",
+              "      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "      fill: #174EA6;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-buttons div {\n",
+              "      margin-bottom: 4px;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert {\n",
+              "      background-color: #3B4455;\n",
+              "      fill: #D2E3FC;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert:hover {\n",
+              "      background-color: #434B5C;\n",
+              "      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "      fill: #FFFFFF;\n",
+              "    }\n",
+              "  </style>\n",
+              "\n",
+              "    <script>\n",
+              "      const buttonEl =\n",
+              "        document.querySelector('#df-62f42d08-1aa4-4900-8f62-0d64d112d9db button.colab-df-convert');\n",
+              "      buttonEl.style.display =\n",
+              "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "      async function convertToInteractive(key) {\n",
+              "        const element = document.querySelector('#df-62f42d08-1aa4-4900-8f62-0d64d112d9db');\n",
+              "        const dataTable =\n",
+              "          await google.colab.kernel.invokeFunction('convertToInteractive',\n",
+              "                                                    [key], {});\n",
+              "        if (!dataTable) return;\n",
+              "\n",
+              "        const docLinkHtml = 'Like what you see? Visit the ' +\n",
+              "          '<a target=\"_blank\" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'\n",
+              "          + ' to learn more about interactive tables.';\n",
+              "        element.innerHTML = '';\n",
+              "        dataTable['output_type'] = 'display_data';\n",
+              "        await google.colab.output.renderOutput(dataTable, element);\n",
+              "        const docLink = document.createElement('div');\n",
+              "        docLink.innerHTML = docLinkHtml;\n",
+              "        element.appendChild(docLink);\n",
+              "      }\n",
+              "    </script>\n",
+              "  </div>\n",
+              "\n",
+              "\n",
+              "    <div id=\"df-8e4ef133-7057-4e86-81af-9671426d131f\">\n",
+              "      <button class=\"colab-df-quickchart\" onclick=\"quickchart('df-8e4ef133-7057-4e86-81af-9671426d131f')\"\n",
+              "                title=\"Suggest charts\"\n",
+              "                style=\"display:none;\">\n",
+              "\n",
+              "<svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\"viewBox=\"0 0 24 24\"\n",
+              "     width=\"24px\">\n",
+              "    <g>\n",
+              "        <path d=\"M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z\"/>\n",
+              "    </g>\n",
+              "</svg>\n",
+              "      </button>\n",
+              "\n",
+              "<style>\n",
+              "  .colab-df-quickchart {\n",
+              "      --bg-color: #E8F0FE;\n",
+              "      --fill-color: #1967D2;\n",
+              "      --hover-bg-color: #E2EBFA;\n",
+              "      --hover-fill-color: #174EA6;\n",
+              "      --disabled-fill-color: #AAA;\n",
+              "      --disabled-bg-color: #DDD;\n",
+              "  }\n",
+              "\n",
+              "  [theme=dark] .colab-df-quickchart {\n",
+              "      --bg-color: #3B4455;\n",
+              "      --fill-color: #D2E3FC;\n",
+              "      --hover-bg-color: #434B5C;\n",
+              "      --hover-fill-color: #FFFFFF;\n",
+              "      --disabled-bg-color: #3B4455;\n",
+              "      --disabled-fill-color: #666;\n",
+              "  }\n",
+              "\n",
+              "  .colab-df-quickchart {\n",
+              "    background-color: var(--bg-color);\n",
+              "    border: none;\n",
+              "    border-radius: 50%;\n",
+              "    cursor: pointer;\n",
+              "    display: none;\n",
+              "    fill: var(--fill-color);\n",
+              "    height: 32px;\n",
+              "    padding: 0;\n",
+              "    width: 32px;\n",
+              "  }\n",
+              "\n",
+              "  .colab-df-quickchart:hover {\n",
+              "    background-color: var(--hover-bg-color);\n",
+              "    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "    fill: var(--button-hover-fill-color);\n",
+              "  }\n",
+              "\n",
+              "  .colab-df-quickchart-complete:disabled,\n",
+              "  .colab-df-quickchart-complete:disabled:hover {\n",
+              "    background-color: var(--disabled-bg-color);\n",
+              "    fill: var(--disabled-fill-color);\n",
+              "    box-shadow: none;\n",
+              "  }\n",
+              "\n",
+              "  .colab-df-spinner {\n",
+              "    border: 2px solid var(--fill-color);\n",
+              "    border-color: transparent;\n",
+              "    border-bottom-color: var(--fill-color);\n",
+              "    animation:\n",
+              "      spin 1s steps(1) infinite;\n",
+              "  }\n",
+              "\n",
+              "  @keyframes spin {\n",
+              "    0% {\n",
+              "      border-color: transparent;\n",
+              "      border-bottom-color: var(--fill-color);\n",
+              "      border-left-color: var(--fill-color);\n",
+              "    }\n",
+              "    20% {\n",
+              "      border-color: transparent;\n",
+              "      border-left-color: var(--fill-color);\n",
+              "      border-top-color: var(--fill-color);\n",
+              "    }\n",
+              "    30% {\n",
+              "      border-color: transparent;\n",
+              "      border-left-color: var(--fill-color);\n",
+              "      border-top-color: var(--fill-color);\n",
+              "      border-right-color: var(--fill-color);\n",
+              "    }\n",
+              "    40% {\n",
+              "      border-color: transparent;\n",
+              "      border-right-color: var(--fill-color);\n",
+              "      border-top-color: var(--fill-color);\n",
+              "    }\n",
+              "    60% {\n",
+              "      border-color: transparent;\n",
+              "      border-right-color: var(--fill-color);\n",
+              "    }\n",
+              "    80% {\n",
+              "      border-color: transparent;\n",
+              "      border-right-color: var(--fill-color);\n",
+              "      border-bottom-color: var(--fill-color);\n",
+              "    }\n",
+              "    90% {\n",
+              "      border-color: transparent;\n",
+              "      border-bottom-color: var(--fill-color);\n",
+              "    }\n",
+              "  }\n",
+              "</style>\n",
+              "\n",
+              "      <script>\n",
+              "        async function quickchart(key) {\n",
+              "          const quickchartButtonEl =\n",
+              "            document.querySelector('#' + key + ' button');\n",
+              "          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.\n",
+              "          quickchartButtonEl.classList.add('colab-df-spinner');\n",
+              "          try {\n",
+              "            const charts = await google.colab.kernel.invokeFunction(\n",
+              "                'suggestCharts', [key], {});\n",
+              "          } catch (error) {\n",
+              "            console.error('Error during call to suggestCharts:', error);\n",
+              "          }\n",
+              "          quickchartButtonEl.classList.remove('colab-df-spinner');\n",
+              "          quickchartButtonEl.classList.add('colab-df-quickchart-complete');\n",
+              "        }\n",
+              "        (() => {\n",
+              "          let quickchartButtonEl =\n",
+              "            document.querySelector('#df-8e4ef133-7057-4e86-81af-9671426d131f button');\n",
+              "          quickchartButtonEl.style.display =\n",
+              "            google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "        })();\n",
+              "      </script>\n",
+              "    </div>\n",
+              "\n",
+              "    </div>\n",
+              "  </div>\n"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "dataframe",
+              "variable_name": "df",
+              "summary": "{\n  \"name\": \"df\",\n  \"rows\": 17379,\n  \"fields\": [\n    {\n      \"column\": \"instant\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 5017,\n        \"min\": 1,\n        \"max\": 17379,\n        \"num_unique_values\": 17379,\n        \"samples\": [\n          12831,\n          8689,\n          7092\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"dteday\",\n      \"properties\": {\n        \"dtype\": \"object\",\n        \"num_unique_values\": 731,\n        \"samples\": [\n          \"2012-12-04\",\n          \"2011-02-03\",\n          \"2011-10-28\"\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"season\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 1,\n        \"min\": 1,\n        \"max\": 4,\n        \"num_unique_values\": 4,\n        \"samples\": [\n          2,\n          4,\n          1\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"yr\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0,\n        \"min\": 0,\n        \"max\": 1,\n        \"num_unique_values\": 2,\n        \"samples\": [\n          1,\n          0\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"mnth\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 3,\n        \"min\": 1,\n        \"max\": 12,\n        \"num_unique_values\": 12,\n        \"samples\": [\n          11,\n          10\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"hr\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 6,\n        \"min\": 0,\n        \"max\": 23,\n        \"num_unique_values\": 24,\n        \"samples\": [\n          8,\n          16\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"holiday\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0,\n        \"min\": 0,\n        \"max\": 1,\n        \"num_unique_values\": 2,\n        \"samples\": [\n          1,\n          0\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"weekday\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 2,\n        \"min\": 0,\n        \"max\": 6,\n        \"num_unique_values\": 7,\n        \"samples\": [\n          6,\n          0\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"workingday\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0,\n        \"min\": 0,\n        \"max\": 1,\n        \"num_unique_values\": 2,\n        \"samples\": [\n          1,\n          0\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"weathersit\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0,\n        \"min\": 1,\n        \"max\": 4,\n        \"num_unique_values\": 4,\n        \"samples\": [\n          2,\n          4\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"temp\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0.19255612124972407,\n        \"min\": 0.02,\n        \"max\": 1.0,\n        \"num_unique_values\": 50,\n        \"samples\": [\n          0.16,\n          0.82\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"atemp\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0.17185021563536587,\n        \"min\": 0.0,\n        \"max\": 1.0,\n        \"num_unique_values\": 65,\n        \"samples\": [\n          0.7879,\n          0.9242\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"hum\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0.1929298340629125,\n        \"min\": 0.0,\n        \"max\": 1.0,\n        \"num_unique_values\": 89,\n        \"samples\": [\n          0.29,\n          0.61\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"windspeed\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0.12234022857279413,\n        \"min\": 0.0,\n        \"max\": 0.8507,\n        \"num_unique_values\": 30,\n        \"samples\": [\n          0.8507,\n          0.4925\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"casual\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 49,\n        \"min\": 0,\n        \"max\": 367,\n        \"num_unique_values\": 322,\n        \"samples\": [\n          201,\n          171\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"registered\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 151,\n        \"min\": 0,\n        \"max\": 886,\n        \"num_unique_values\": 776,\n        \"samples\": [\n          342,\n          744\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"cnt\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 181,\n        \"min\": 1,\n        \"max\": 977,\n        \"num_unique_values\": 869,\n        \"samples\": [\n          594,\n          46\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    }\n  ]\n}"
+            }
+          },
+          "metadata": {},
+          "execution_count": 19
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Q10. What are the data types of each column?\n"
+      ],
+      "metadata": {
+        "id": "GbDnC_i438m8"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "df.dtypes\n"
+      ],
+      "metadata": {
+        "id": "_YJIqJEZ3-DC",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 617
+        },
+        "outputId": "2d34cde0-2c29-46fb-b16b-837d214b0f11"
+      },
+      "execution_count": 20,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "instant         int64\n",
+              "dteday         object\n",
+              "season          int64\n",
+              "yr              int64\n",
+              "mnth            int64\n",
+              "hr              int64\n",
+              "holiday         int64\n",
+              "weekday         int64\n",
+              "workingday      int64\n",
+              "weathersit      int64\n",
+              "temp          float64\n",
+              "atemp         float64\n",
+              "hum           float64\n",
+              "windspeed     float64\n",
+              "casual          int64\n",
+              "registered      int64\n",
+              "cnt             int64\n",
+              "dtype: object"
+            ],
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>0</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>instant</th>\n",
+              "      <td>int64</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>dteday</th>\n",
+              "      <td>object</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>season</th>\n",
+              "      <td>int64</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>yr</th>\n",
+              "      <td>int64</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>mnth</th>\n",
+              "      <td>int64</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>hr</th>\n",
+              "      <td>int64</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>holiday</th>\n",
+              "      <td>int64</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>weekday</th>\n",
+              "      <td>int64</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>workingday</th>\n",
+              "      <td>int64</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>weathersit</th>\n",
+              "      <td>int64</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>temp</th>\n",
+              "      <td>float64</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>atemp</th>\n",
+              "      <td>float64</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>hum</th>\n",
+              "      <td>float64</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>windspeed</th>\n",
+              "      <td>float64</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>casual</th>\n",
+              "      <td>int64</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>registered</th>\n",
+              "      <td>int64</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>cnt</th>\n",
+              "      <td>int64</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div><br><label><b>dtype:</b> object</label>"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 20
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Q11. Are there any missing values in the dataset? If so, which columns have missing values and how many?"
+      ],
+      "metadata": {
+        "id": "zi0jHMq-3_NI"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "missing_values = df.isnull().sum()\n",
+        "\n",
+        "missing_values = missing_values[missing_values > 0]\n",
+        "\n",
+        "\n",
+        "if missing_values.empty:\n",
+        "    print(\" There are no missing values in the dataset.\")\n",
+        "else:\n",
+        "    print(\" Missing values found:\\n\")\n",
+        "    print(missing_values)\n"
+      ],
+      "metadata": {
+        "id": "mct7F2M-3-kQ",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 0
+        },
+        "outputId": "cae8c3b6-9f9f-438a-bc27-db0c5d10ed8d"
+      },
+      "execution_count": 21,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "✅ There are no missing values in the dataset.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Q.12. For the windspeed column, calculate the mean, median, and standard deviation."
+      ],
+      "metadata": {
+        "id": "Ew__56Iq4BMK"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Mean\n",
+        "mean_wind = df['windspeed'].mean()\n",
+        "\n",
+        "# Median\n",
+        "median_wind = df['windspeed'].median()\n",
+        "\n",
+        "# Standard Deviation\n",
+        "std_wind = df['windspeed'].std()\n",
+        "\n",
+        "# Display results\n",
+        "print(f\"Mean windspeed       : {mean_wind:.4f}\")\n",
+        "print(f\"Median windspeed     : {median_wind:.4f}\")\n",
+        "print(f\"Standard deviation   : {std_wind:.4f}\")\n"
+      ],
+      "metadata": {
+        "id": "ucijLTNA4Clr",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 0
+        },
+        "outputId": "0b981c20-3fac-4adc-c72b-b16009ca118f"
+      },
+      "execution_count": 22,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Mean windspeed       : 0.1901\n",
+            "Median windspeed     : 0.1940\n",
+            "Standard deviation   : 0.1223\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Q13. Identify any potential outliers in a numerical column of your choice. Explain your approach.\n"
+      ],
+      "metadata": {
+        "id": "3dHaYtuP4C78"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Step 1: Select the column\n",
+        "col = 'windspeed'\n",
+        "\n",
+        "# Step 2-4: Calculate Q1, Q3, IQR, and bounds\n",
+        "Q1 = df[col].quantile(0.25)\n",
+        "Q3 = df[col].quantile(0.75)\n",
+        "IQR = Q3 - Q1\n",
+        "\n",
+        "lower_bound = Q1 - 1.5 * IQR\n",
+        "upper_bound = Q3 + 1.5 * IQR\n",
+        "\n",
+        "# Step 5: Identify outliers\n",
+        "outliers = df[(df[col] < lower_bound) | (df[col] > upper_bound)]\n",
+        "\n",
+        "print(f\"Total outliers in '{col}': {len(outliers)}\")\n",
+        "print(f\"Lower bound: {lower_bound:.4f}, Upper bound: {upper_bound:.4f}\")\n"
+      ],
+      "metadata": {
+        "id": "nVkU-okb4EiU",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 0
+        },
+        "outputId": "5cf2cf0c-978f-4201-876f-70fee2a4ffb4"
+      },
+      "execution_count": 23,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Total outliers in 'windspeed': 342\n",
+            "Lower bound: -0.1193, Upper bound: 0.4775\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Q.14 Find the correlation between numerical columns and discuss any interesting relationships."
+      ],
+      "metadata": {
+        "id": "14sUq8ZF4E88"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "correlation_matrix = df.corr(numeric_only=True)\n",
+        "\n",
+        "correlation_matrix\n"
+      ],
+      "metadata": {
+        "id": "jnAOuuwt4Hmb",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 571
+        },
+        "outputId": "17470695-f1b7-45a6-b3ff-4e0b81004d9b"
+      },
+      "execution_count": 24,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "             instant    season        yr      mnth        hr   holiday  \\\n",
+              "instant     1.000000  0.404046  0.866014  0.489164 -0.004775  0.014723   \n",
+              "season      0.404046  1.000000 -0.010742  0.830386 -0.006117 -0.009585   \n",
+              "yr          0.866014 -0.010742  1.000000 -0.010473 -0.003867  0.006692   \n",
+              "mnth        0.489164  0.830386 -0.010473  1.000000 -0.005772  0.018430   \n",
+              "hr         -0.004775 -0.006117 -0.003867 -0.005772  1.000000  0.000479   \n",
+              "holiday     0.014723 -0.009585  0.006692  0.018430  0.000479  1.000000   \n",
+              "weekday     0.001357 -0.002335 -0.004485  0.010400 -0.003498 -0.102088   \n",
+              "workingday -0.003416  0.013743 -0.002196 -0.003477  0.002285 -0.252471   \n",
+              "weathersit -0.014198 -0.014524 -0.019157  0.005400 -0.020203 -0.017036   \n",
+              "temp        0.136178  0.312025  0.040913  0.201691  0.137603 -0.027340   \n",
+              "atemp       0.137615  0.319380  0.039222  0.208096  0.133750 -0.030973   \n",
+              "hum         0.009577  0.150625 -0.083546  0.164411 -0.276498 -0.010588   \n",
+              "windspeed  -0.074505 -0.149773 -0.008740 -0.135386  0.137252  0.003988   \n",
+              "casual      0.158295  0.120206  0.142779  0.068457  0.301202  0.031564   \n",
+              "registered  0.282046  0.174226  0.253684  0.122273  0.374141 -0.047345   \n",
+              "cnt         0.278379  0.178056  0.250495  0.120638  0.394071 -0.030927   \n",
+              "\n",
+              "             weekday  workingday  weathersit      temp     atemp       hum  \\\n",
+              "instant     0.001357   -0.003416   -0.014198  0.136178  0.137615  0.009577   \n",
+              "season     -0.002335    0.013743   -0.014524  0.312025  0.319380  0.150625   \n",
+              "yr         -0.004485   -0.002196   -0.019157  0.040913  0.039222 -0.083546   \n",
+              "mnth        0.010400   -0.003477    0.005400  0.201691  0.208096  0.164411   \n",
+              "hr         -0.003498    0.002285   -0.020203  0.137603  0.133750 -0.276498   \n",
+              "holiday    -0.102088   -0.252471   -0.017036 -0.027340 -0.030973 -0.010588   \n",
+              "weekday     1.000000    0.035955    0.003311 -0.001795 -0.008821 -0.037158   \n",
+              "workingday  0.035955    1.000000    0.044672  0.055390  0.054667  0.015688   \n",
+              "weathersit  0.003311    0.044672    1.000000 -0.102640 -0.105563  0.418130   \n",
+              "temp       -0.001795    0.055390   -0.102640  1.000000  0.987672 -0.069881   \n",
+              "atemp      -0.008821    0.054667   -0.105563  0.987672  1.000000 -0.051918   \n",
+              "hum        -0.037158    0.015688    0.418130 -0.069881 -0.051918  1.000000   \n",
+              "windspeed   0.011502   -0.011830    0.026226 -0.023125 -0.062336 -0.290105   \n",
+              "casual      0.032721   -0.300942   -0.152628  0.459616  0.454080 -0.347028   \n",
+              "registered  0.021578    0.134326   -0.120966  0.335361  0.332559 -0.273933   \n",
+              "cnt         0.026900    0.030284   -0.142426  0.404772  0.400929 -0.322911   \n",
+              "\n",
+              "            windspeed    casual  registered       cnt  \n",
+              "instant     -0.074505  0.158295    0.282046  0.278379  \n",
+              "season      -0.149773  0.120206    0.174226  0.178056  \n",
+              "yr          -0.008740  0.142779    0.253684  0.250495  \n",
+              "mnth        -0.135386  0.068457    0.122273  0.120638  \n",
+              "hr           0.137252  0.301202    0.374141  0.394071  \n",
+              "holiday      0.003988  0.031564   -0.047345 -0.030927  \n",
+              "weekday      0.011502  0.032721    0.021578  0.026900  \n",
+              "workingday  -0.011830 -0.300942    0.134326  0.030284  \n",
+              "weathersit   0.026226 -0.152628   -0.120966 -0.142426  \n",
+              "temp        -0.023125  0.459616    0.335361  0.404772  \n",
+              "atemp       -0.062336  0.454080    0.332559  0.400929  \n",
+              "hum         -0.290105 -0.347028   -0.273933 -0.322911  \n",
+              "windspeed    1.000000  0.090287    0.082321  0.093234  \n",
+              "casual       0.090287  1.000000    0.506618  0.694564  \n",
+              "registered   0.082321  0.506618    1.000000  0.972151  \n",
+              "cnt          0.093234  0.694564    0.972151  1.000000  "
+            ],
+            "text/html": [
+              "\n",
+              "  <div id=\"df-c91909e7-9416-4d0e-99da-82bf42abd2a4\" class=\"colab-df-container\">\n",
+              "    <div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>instant</th>\n",
+              "      <th>season</th>\n",
+              "      <th>yr</th>\n",
+              "      <th>mnth</th>\n",
+              "      <th>hr</th>\n",
+              "      <th>holiday</th>\n",
+              "      <th>weekday</th>\n",
+              "      <th>workingday</th>\n",
+              "      <th>weathersit</th>\n",
+              "      <th>temp</th>\n",
+              "      <th>atemp</th>\n",
+              "      <th>hum</th>\n",
+              "      <th>windspeed</th>\n",
+              "      <th>casual</th>\n",
+              "      <th>registered</th>\n",
+              "      <th>cnt</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>instant</th>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.404046</td>\n",
+              "      <td>0.866014</td>\n",
+              "      <td>0.489164</td>\n",
+              "      <td>-0.004775</td>\n",
+              "      <td>0.014723</td>\n",
+              "      <td>0.001357</td>\n",
+              "      <td>-0.003416</td>\n",
+              "      <td>-0.014198</td>\n",
+              "      <td>0.136178</td>\n",
+              "      <td>0.137615</td>\n",
+              "      <td>0.009577</td>\n",
+              "      <td>-0.074505</td>\n",
+              "      <td>0.158295</td>\n",
+              "      <td>0.282046</td>\n",
+              "      <td>0.278379</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>season</th>\n",
+              "      <td>0.404046</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>-0.010742</td>\n",
+              "      <td>0.830386</td>\n",
+              "      <td>-0.006117</td>\n",
+              "      <td>-0.009585</td>\n",
+              "      <td>-0.002335</td>\n",
+              "      <td>0.013743</td>\n",
+              "      <td>-0.014524</td>\n",
+              "      <td>0.312025</td>\n",
+              "      <td>0.319380</td>\n",
+              "      <td>0.150625</td>\n",
+              "      <td>-0.149773</td>\n",
+              "      <td>0.120206</td>\n",
+              "      <td>0.174226</td>\n",
+              "      <td>0.178056</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>yr</th>\n",
+              "      <td>0.866014</td>\n",
+              "      <td>-0.010742</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>-0.010473</td>\n",
+              "      <td>-0.003867</td>\n",
+              "      <td>0.006692</td>\n",
+              "      <td>-0.004485</td>\n",
+              "      <td>-0.002196</td>\n",
+              "      <td>-0.019157</td>\n",
+              "      <td>0.040913</td>\n",
+              "      <td>0.039222</td>\n",
+              "      <td>-0.083546</td>\n",
+              "      <td>-0.008740</td>\n",
+              "      <td>0.142779</td>\n",
+              "      <td>0.253684</td>\n",
+              "      <td>0.250495</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>mnth</th>\n",
+              "      <td>0.489164</td>\n",
+              "      <td>0.830386</td>\n",
+              "      <td>-0.010473</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>-0.005772</td>\n",
+              "      <td>0.018430</td>\n",
+              "      <td>0.010400</td>\n",
+              "      <td>-0.003477</td>\n",
+              "      <td>0.005400</td>\n",
+              "      <td>0.201691</td>\n",
+              "      <td>0.208096</td>\n",
+              "      <td>0.164411</td>\n",
+              "      <td>-0.135386</td>\n",
+              "      <td>0.068457</td>\n",
+              "      <td>0.122273</td>\n",
+              "      <td>0.120638</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>hr</th>\n",
+              "      <td>-0.004775</td>\n",
+              "      <td>-0.006117</td>\n",
+              "      <td>-0.003867</td>\n",
+              "      <td>-0.005772</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.000479</td>\n",
+              "      <td>-0.003498</td>\n",
+              "      <td>0.002285</td>\n",
+              "      <td>-0.020203</td>\n",
+              "      <td>0.137603</td>\n",
+              "      <td>0.133750</td>\n",
+              "      <td>-0.276498</td>\n",
+              "      <td>0.137252</td>\n",
+              "      <td>0.301202</td>\n",
+              "      <td>0.374141</td>\n",
+              "      <td>0.394071</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>holiday</th>\n",
+              "      <td>0.014723</td>\n",
+              "      <td>-0.009585</td>\n",
+              "      <td>0.006692</td>\n",
+              "      <td>0.018430</td>\n",
+              "      <td>0.000479</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>-0.102088</td>\n",
+              "      <td>-0.252471</td>\n",
+              "      <td>-0.017036</td>\n",
+              "      <td>-0.027340</td>\n",
+              "      <td>-0.030973</td>\n",
+              "      <td>-0.010588</td>\n",
+              "      <td>0.003988</td>\n",
+              "      <td>0.031564</td>\n",
+              "      <td>-0.047345</td>\n",
+              "      <td>-0.030927</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>weekday</th>\n",
+              "      <td>0.001357</td>\n",
+              "      <td>-0.002335</td>\n",
+              "      <td>-0.004485</td>\n",
+              "      <td>0.010400</td>\n",
+              "      <td>-0.003498</td>\n",
+              "      <td>-0.102088</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.035955</td>\n",
+              "      <td>0.003311</td>\n",
+              "      <td>-0.001795</td>\n",
+              "      <td>-0.008821</td>\n",
+              "      <td>-0.037158</td>\n",
+              "      <td>0.011502</td>\n",
+              "      <td>0.032721</td>\n",
+              "      <td>0.021578</td>\n",
+              "      <td>0.026900</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>workingday</th>\n",
+              "      <td>-0.003416</td>\n",
+              "      <td>0.013743</td>\n",
+              "      <td>-0.002196</td>\n",
+              "      <td>-0.003477</td>\n",
+              "      <td>0.002285</td>\n",
+              "      <td>-0.252471</td>\n",
+              "      <td>0.035955</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.044672</td>\n",
+              "      <td>0.055390</td>\n",
+              "      <td>0.054667</td>\n",
+              "      <td>0.015688</td>\n",
+              "      <td>-0.011830</td>\n",
+              "      <td>-0.300942</td>\n",
+              "      <td>0.134326</td>\n",
+              "      <td>0.030284</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>weathersit</th>\n",
+              "      <td>-0.014198</td>\n",
+              "      <td>-0.014524</td>\n",
+              "      <td>-0.019157</td>\n",
+              "      <td>0.005400</td>\n",
+              "      <td>-0.020203</td>\n",
+              "      <td>-0.017036</td>\n",
+              "      <td>0.003311</td>\n",
+              "      <td>0.044672</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>-0.102640</td>\n",
+              "      <td>-0.105563</td>\n",
+              "      <td>0.418130</td>\n",
+              "      <td>0.026226</td>\n",
+              "      <td>-0.152628</td>\n",
+              "      <td>-0.120966</td>\n",
+              "      <td>-0.142426</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>temp</th>\n",
+              "      <td>0.136178</td>\n",
+              "      <td>0.312025</td>\n",
+              "      <td>0.040913</td>\n",
+              "      <td>0.201691</td>\n",
+              "      <td>0.137603</td>\n",
+              "      <td>-0.027340</td>\n",
+              "      <td>-0.001795</td>\n",
+              "      <td>0.055390</td>\n",
+              "      <td>-0.102640</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.987672</td>\n",
+              "      <td>-0.069881</td>\n",
+              "      <td>-0.023125</td>\n",
+              "      <td>0.459616</td>\n",
+              "      <td>0.335361</td>\n",
+              "      <td>0.404772</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>atemp</th>\n",
+              "      <td>0.137615</td>\n",
+              "      <td>0.319380</td>\n",
+              "      <td>0.039222</td>\n",
+              "      <td>0.208096</td>\n",
+              "      <td>0.133750</td>\n",
+              "      <td>-0.030973</td>\n",
+              "      <td>-0.008821</td>\n",
+              "      <td>0.054667</td>\n",
+              "      <td>-0.105563</td>\n",
+              "      <td>0.987672</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>-0.051918</td>\n",
+              "      <td>-0.062336</td>\n",
+              "      <td>0.454080</td>\n",
+              "      <td>0.332559</td>\n",
+              "      <td>0.400929</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>hum</th>\n",
+              "      <td>0.009577</td>\n",
+              "      <td>0.150625</td>\n",
+              "      <td>-0.083546</td>\n",
+              "      <td>0.164411</td>\n",
+              "      <td>-0.276498</td>\n",
+              "      <td>-0.010588</td>\n",
+              "      <td>-0.037158</td>\n",
+              "      <td>0.015688</td>\n",
+              "      <td>0.418130</td>\n",
+              "      <td>-0.069881</td>\n",
+              "      <td>-0.051918</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>-0.290105</td>\n",
+              "      <td>-0.347028</td>\n",
+              "      <td>-0.273933</td>\n",
+              "      <td>-0.322911</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>windspeed</th>\n",
+              "      <td>-0.074505</td>\n",
+              "      <td>-0.149773</td>\n",
+              "      <td>-0.008740</td>\n",
+              "      <td>-0.135386</td>\n",
+              "      <td>0.137252</td>\n",
+              "      <td>0.003988</td>\n",
+              "      <td>0.011502</td>\n",
+              "      <td>-0.011830</td>\n",
+              "      <td>0.026226</td>\n",
+              "      <td>-0.023125</td>\n",
+              "      <td>-0.062336</td>\n",
+              "      <td>-0.290105</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.090287</td>\n",
+              "      <td>0.082321</td>\n",
+              "      <td>0.093234</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>casual</th>\n",
+              "      <td>0.158295</td>\n",
+              "      <td>0.120206</td>\n",
+              "      <td>0.142779</td>\n",
+              "      <td>0.068457</td>\n",
+              "      <td>0.301202</td>\n",
+              "      <td>0.031564</td>\n",
+              "      <td>0.032721</td>\n",
+              "      <td>-0.300942</td>\n",
+              "      <td>-0.152628</td>\n",
+              "      <td>0.459616</td>\n",
+              "      <td>0.454080</td>\n",
+              "      <td>-0.347028</td>\n",
+              "      <td>0.090287</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.506618</td>\n",
+              "      <td>0.694564</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>registered</th>\n",
+              "      <td>0.282046</td>\n",
+              "      <td>0.174226</td>\n",
+              "      <td>0.253684</td>\n",
+              "      <td>0.122273</td>\n",
+              "      <td>0.374141</td>\n",
+              "      <td>-0.047345</td>\n",
+              "      <td>0.021578</td>\n",
+              "      <td>0.134326</td>\n",
+              "      <td>-0.120966</td>\n",
+              "      <td>0.335361</td>\n",
+              "      <td>0.332559</td>\n",
+              "      <td>-0.273933</td>\n",
+              "      <td>0.082321</td>\n",
+              "      <td>0.506618</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.972151</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>cnt</th>\n",
+              "      <td>0.278379</td>\n",
+              "      <td>0.178056</td>\n",
+              "      <td>0.250495</td>\n",
+              "      <td>0.120638</td>\n",
+              "      <td>0.394071</td>\n",
+              "      <td>-0.030927</td>\n",
+              "      <td>0.026900</td>\n",
+              "      <td>0.030284</td>\n",
+              "      <td>-0.142426</td>\n",
+              "      <td>0.404772</td>\n",
+              "      <td>0.400929</td>\n",
+              "      <td>-0.322911</td>\n",
+              "      <td>0.093234</td>\n",
+              "      <td>0.694564</td>\n",
+              "      <td>0.972151</td>\n",
+              "      <td>1.000000</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>\n",
+              "    <div class=\"colab-df-buttons\">\n",
+              "\n",
+              "  <div class=\"colab-df-container\">\n",
+              "    <button class=\"colab-df-convert\" onclick=\"convertToInteractive('df-c91909e7-9416-4d0e-99da-82bf42abd2a4')\"\n",
+              "            title=\"Convert this dataframe to an interactive table.\"\n",
+              "            style=\"display:none;\">\n",
+              "\n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewBox=\"0 -960 960 960\">\n",
+              "    <path d=\"M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z\"/>\n",
+              "  </svg>\n",
+              "    </button>\n",
+              "\n",
+              "  <style>\n",
+              "    .colab-df-container {\n",
+              "      display:flex;\n",
+              "      gap: 12px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert {\n",
+              "      background-color: #E8F0FE;\n",
+              "      border: none;\n",
+              "      border-radius: 50%;\n",
+              "      cursor: pointer;\n",
+              "      display: none;\n",
+              "      fill: #1967D2;\n",
+              "      height: 32px;\n",
+              "      padding: 0 0 0 0;\n",
+              "      width: 32px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert:hover {\n",
+              "      background-color: #E2EBFA;\n",
+              "      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "      fill: #174EA6;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-buttons div {\n",
+              "      margin-bottom: 4px;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert {\n",
+              "      background-color: #3B4455;\n",
+              "      fill: #D2E3FC;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert:hover {\n",
+              "      background-color: #434B5C;\n",
+              "      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "      fill: #FFFFFF;\n",
+              "    }\n",
+              "  </style>\n",
+              "\n",
+              "    <script>\n",
+              "      const buttonEl =\n",
+              "        document.querySelector('#df-c91909e7-9416-4d0e-99da-82bf42abd2a4 button.colab-df-convert');\n",
+              "      buttonEl.style.display =\n",
+              "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "      async function convertToInteractive(key) {\n",
+              "        const element = document.querySelector('#df-c91909e7-9416-4d0e-99da-82bf42abd2a4');\n",
+              "        const dataTable =\n",
+              "          await google.colab.kernel.invokeFunction('convertToInteractive',\n",
+              "                                                    [key], {});\n",
+              "        if (!dataTable) return;\n",
+              "\n",
+              "        const docLinkHtml = 'Like what you see? Visit the ' +\n",
+              "          '<a target=\"_blank\" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'\n",
+              "          + ' to learn more about interactive tables.';\n",
+              "        element.innerHTML = '';\n",
+              "        dataTable['output_type'] = 'display_data';\n",
+              "        await google.colab.output.renderOutput(dataTable, element);\n",
+              "        const docLink = document.createElement('div');\n",
+              "        docLink.innerHTML = docLinkHtml;\n",
+              "        element.appendChild(docLink);\n",
+              "      }\n",
+              "    </script>\n",
+              "  </div>\n",
+              "\n",
+              "\n",
+              "    <div id=\"df-afb814d0-2fe9-42ec-8324-3d472d06798a\">\n",
+              "      <button class=\"colab-df-quickchart\" onclick=\"quickchart('df-afb814d0-2fe9-42ec-8324-3d472d06798a')\"\n",
+              "                title=\"Suggest charts\"\n",
+              "                style=\"display:none;\">\n",
+              "\n",
+              "<svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\"viewBox=\"0 0 24 24\"\n",
+              "     width=\"24px\">\n",
+              "    <g>\n",
+              "        <path d=\"M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z\"/>\n",
+              "    </g>\n",
+              "</svg>\n",
+              "      </button>\n",
+              "\n",
+              "<style>\n",
+              "  .colab-df-quickchart {\n",
+              "      --bg-color: #E8F0FE;\n",
+              "      --fill-color: #1967D2;\n",
+              "      --hover-bg-color: #E2EBFA;\n",
+              "      --hover-fill-color: #174EA6;\n",
+              "      --disabled-fill-color: #AAA;\n",
+              "      --disabled-bg-color: #DDD;\n",
+              "  }\n",
+              "\n",
+              "  [theme=dark] .colab-df-quickchart {\n",
+              "      --bg-color: #3B4455;\n",
+              "      --fill-color: #D2E3FC;\n",
+              "      --hover-bg-color: #434B5C;\n",
+              "      --hover-fill-color: #FFFFFF;\n",
+              "      --disabled-bg-color: #3B4455;\n",
+              "      --disabled-fill-color: #666;\n",
+              "  }\n",
+              "\n",
+              "  .colab-df-quickchart {\n",
+              "    background-color: var(--bg-color);\n",
+              "    border: none;\n",
+              "    border-radius: 50%;\n",
+              "    cursor: pointer;\n",
+              "    display: none;\n",
+              "    fill: var(--fill-color);\n",
+              "    height: 32px;\n",
+              "    padding: 0;\n",
+              "    width: 32px;\n",
+              "  }\n",
+              "\n",
+              "  .colab-df-quickchart:hover {\n",
+              "    background-color: var(--hover-bg-color);\n",
+              "    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "    fill: var(--button-hover-fill-color);\n",
+              "  }\n",
+              "\n",
+              "  .colab-df-quickchart-complete:disabled,\n",
+              "  .colab-df-quickchart-complete:disabled:hover {\n",
+              "    background-color: var(--disabled-bg-color);\n",
+              "    fill: var(--disabled-fill-color);\n",
+              "    box-shadow: none;\n",
+              "  }\n",
+              "\n",
+              "  .colab-df-spinner {\n",
+              "    border: 2px solid var(--fill-color);\n",
+              "    border-color: transparent;\n",
+              "    border-bottom-color: var(--fill-color);\n",
+              "    animation:\n",
+              "      spin 1s steps(1) infinite;\n",
+              "  }\n",
+              "\n",
+              "  @keyframes spin {\n",
+              "    0% {\n",
+              "      border-color: transparent;\n",
+              "      border-bottom-color: var(--fill-color);\n",
+              "      border-left-color: var(--fill-color);\n",
+              "    }\n",
+              "    20% {\n",
+              "      border-color: transparent;\n",
+              "      border-left-color: var(--fill-color);\n",
+              "      border-top-color: var(--fill-color);\n",
+              "    }\n",
+              "    30% {\n",
+              "      border-color: transparent;\n",
+              "      border-left-color: var(--fill-color);\n",
+              "      border-top-color: var(--fill-color);\n",
+              "      border-right-color: var(--fill-color);\n",
+              "    }\n",
+              "    40% {\n",
+              "      border-color: transparent;\n",
+              "      border-right-color: var(--fill-color);\n",
+              "      border-top-color: var(--fill-color);\n",
+              "    }\n",
+              "    60% {\n",
+              "      border-color: transparent;\n",
+              "      border-right-color: var(--fill-color);\n",
+              "    }\n",
+              "    80% {\n",
+              "      border-color: transparent;\n",
+              "      border-right-color: var(--fill-color);\n",
+              "      border-bottom-color: var(--fill-color);\n",
+              "    }\n",
+              "    90% {\n",
+              "      border-color: transparent;\n",
+              "      border-bottom-color: var(--fill-color);\n",
+              "    }\n",
+              "  }\n",
+              "</style>\n",
+              "\n",
+              "      <script>\n",
+              "        async function quickchart(key) {\n",
+              "          const quickchartButtonEl =\n",
+              "            document.querySelector('#' + key + ' button');\n",
+              "          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.\n",
+              "          quickchartButtonEl.classList.add('colab-df-spinner');\n",
+              "          try {\n",
+              "            const charts = await google.colab.kernel.invokeFunction(\n",
+              "                'suggestCharts', [key], {});\n",
+              "          } catch (error) {\n",
+              "            console.error('Error during call to suggestCharts:', error);\n",
+              "          }\n",
+              "          quickchartButtonEl.classList.remove('colab-df-spinner');\n",
+              "          quickchartButtonEl.classList.add('colab-df-quickchart-complete');\n",
+              "        }\n",
+              "        (() => {\n",
+              "          let quickchartButtonEl =\n",
+              "            document.querySelector('#df-afb814d0-2fe9-42ec-8324-3d472d06798a button');\n",
+              "          quickchartButtonEl.style.display =\n",
+              "            google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "        })();\n",
+              "      </script>\n",
+              "    </div>\n",
+              "\n",
+              "  <div id=\"id_707a59a6-ed4d-4afe-bed4-af971dadde6e\">\n",
+              "    <style>\n",
+              "      .colab-df-generate {\n",
+              "        background-color: #E8F0FE;\n",
+              "        border: none;\n",
+              "        border-radius: 50%;\n",
+              "        cursor: pointer;\n",
+              "        display: none;\n",
+              "        fill: #1967D2;\n",
+              "        height: 32px;\n",
+              "        padding: 0 0 0 0;\n",
+              "        width: 32px;\n",
+              "      }\n",
+              "\n",
+              "      .colab-df-generate:hover {\n",
+              "        background-color: #E2EBFA;\n",
+              "        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "        fill: #174EA6;\n",
+              "      }\n",
+              "\n",
+              "      [theme=dark] .colab-df-generate {\n",
+              "        background-color: #3B4455;\n",
+              "        fill: #D2E3FC;\n",
+              "      }\n",
+              "\n",
+              "      [theme=dark] .colab-df-generate:hover {\n",
+              "        background-color: #434B5C;\n",
+              "        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "        fill: #FFFFFF;\n",
+              "      }\n",
+              "    </style>\n",
+              "    <button class=\"colab-df-generate\" onclick=\"generateWithVariable('correlation_matrix')\"\n",
+              "            title=\"Generate code using this dataframe.\"\n",
+              "            style=\"display:none;\">\n",
+              "\n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\"viewBox=\"0 0 24 24\"\n",
+              "       width=\"24px\">\n",
+              "    <path d=\"M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z\"/>\n",
+              "  </svg>\n",
+              "    </button>\n",
+              "    <script>\n",
+              "      (() => {\n",
+              "      const buttonEl =\n",
+              "        document.querySelector('#id_707a59a6-ed4d-4afe-bed4-af971dadde6e button.colab-df-generate');\n",
+              "      buttonEl.style.display =\n",
+              "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "      buttonEl.onclick = () => {\n",
+              "        google.colab.notebook.generateWithVariable('correlation_matrix');\n",
+              "      }\n",
+              "      })();\n",
+              "    </script>\n",
+              "  </div>\n",
+              "\n",
+              "    </div>\n",
+              "  </div>\n"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "dataframe",
+              "variable_name": "correlation_matrix",
+              "summary": "{\n  \"name\": \"correlation_matrix\",\n  \"rows\": 16,\n  \"fields\": [\n    {\n      \"column\": \"instant\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0.31953775919680244,\n        \"min\": -0.07450453969595212,\n        \"max\": 1.0,\n        \"num_unique_values\": 16,\n        \"samples\": [\n          1.0,\n          0.4040457208710286,\n          0.014723494213066297\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"season\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0.31515465326246933,\n        \"min\": -0.14977275116521144,\n        \"max\": 1.0,\n        \"num_unique_values\": 16,\n        \"samples\": [\n          0.4040457208710286,\n          1.0,\n          -0.00958452586919976\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"yr\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0.31950346547627856,\n        \"min\": -0.08354642088344329,\n        \"max\": 1.0,\n        \"num_unique_values\": 16,\n        \"samples\": [\n          0.8660140489946193,\n          -0.010742486207836325,\n          0.0066916166081595835\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"mnth\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0.3160649351745974,\n        \"min\": -0.13538632320501096,\n        \"max\": 1.0,\n        \"num_unique_values\": 16,\n        \"samples\": [\n          0.4891638307722482,\n          0.8303858922042007,\n          0.01843032523294527\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"hr\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0.2860103197245869,\n        \"min\": -0.2764978279048565,\n        \"max\": 1.0,\n        \"num_unique_values\": 16,\n        \"samples\": [\n          -0.004774814643935365,\n          -0.00611690086619728,\n          0.0004791360364798608\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"holiday\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0.26613783401770447,\n        \"min\": -0.25247136958183775,\n        \"max\": 1.0,\n        \"num_unique_values\": 16,\n        \"samples\": [\n          0.014723494213066297,\n          -0.00958452586919976,\n          1.0\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"weekday\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0.25235788530719366,\n        \"min\": -0.10208779083596176,\n        \"max\": 1.0,\n        \"num_unique_values\": 16,\n        \"samples\": [\n          0.0013568200654600693,\n          -0.002335349725048378,\n          -0.10208779083596176\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"workingday\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0.2759159920801786,\n        \"min\": -0.3009424860259183,\n        \"max\": 1.0,\n        \"num_unique_values\": 16,\n        \"samples\": [\n          -0.003415559211918336,\n          0.01374310174705762,\n          -0.25247136958183775\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"weathersit\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0.2851990727996438,\n        \"min\": -0.15262788466438984,\n        \"max\": 1.0,\n        \"num_unique_values\": 16,\n        \"samples\": [\n          -0.01419760329921686,\n          -0.014523552139127328,\n          -0.017036113360590292\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"temp\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0.3401294193402752,\n        \"min\": -0.10263993557969309,\n        \"max\": 1.0,\n        \"num_unique_values\": 16,\n        \"samples\": [\n          0.13617800734755237,\n          0.3120252372573941,\n          -0.027340476921091435\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"atemp\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0.3417574866394121,\n        \"min\": -0.10556310792661813,\n        \"max\": 1.0,\n        \"num_unique_values\": 16,\n        \"samples\": [\n          0.1376146101845261,\n          0.31937981095888285,\n          -0.03097273698121888\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"hum\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0.33677795666418586,\n        \"min\": -0.34702809283992725,\n        \"max\": 1.0,\n        \"num_unique_values\": 16,\n        \"samples\": [\n          0.009576773993503715,\n          0.15062474540392665,\n          -0.010588464952625335\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"windspeed\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0.27673502500952696,\n        \"min\": -0.2901048950638631,\n        \"max\": 1.0,\n        \"num_unique_values\": 16,\n        \"samples\": [\n          -0.07450453969595212,\n          -0.14977275116521144,\n          0.0039876315751622695\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"casual\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0.355170089743748,\n        \"min\": -0.34702809283992725,\n        \"max\": 1.0,\n        \"num_unique_values\": 16,\n        \"samples\": [\n          0.15829540104166423,\n          0.1202064473500264,\n          0.03156362837395937\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"registered\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0.34595615744631564,\n        \"min\": -0.2739331184919315,\n        \"max\": 1.0,\n        \"num_unique_values\": 16,\n        \"samples\": [\n          0.2820457773944356,\n          0.1742256334023612,\n          -0.04734542440847335\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"cnt\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0.3695075192167331,\n        \"min\": -0.32291074082456017,\n        \"max\": 1.0,\n        \"num_unique_values\": 16,\n        \"samples\": [\n          0.27837869391745607,\n          0.17805573098267663,\n          -0.030927303249110614\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    }\n  ]\n}"
+            }
+          },
+          "metadata": {},
+          "execution_count": 24
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Q.15 Based on your analysis, provide a brief summary of any insights or patterns you discovered in the dataset."
+      ],
+      "metadata": {
+        "id": "ru-xlbd44IAY"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "\n",
+        " 1. Dataset Overview\n",
+        "Total records: 17,379\n",
+        "\n",
+        "Columns: 17\n",
+        "\n",
+        "No missing values were found in the dataset — ✅ data is clean.\n",
+        "\n",
+        " 2. Weather & Environment Effects\n",
+        "Temperature (temp/atemp) has a moderate positive correlation with total bike usage (cnt). Warmer weather → more rentals.\n",
+        "\n",
+        "Humidity (hum) and windspeed both show a slight negative correlation — likely because high humidity and wind make biking less comfortable.\n",
+        "\n",
+        " 3. User Type Influence\n",
+        "Registered users (registered) have a very strong positive correlation (~0.97) with total usage — they are the main contributors to rental count.\n",
+        "\n",
+        "Casual users correlate moderately (~0.53) — meaning weekend or occasional users contribute, but far less than subscribers.\n",
+        "\n",
+        " 4. Hourly and Temporal Trends (from earlier rows)\n",
+        "Rentals are lower at night (e.g., hour = 0–5), start increasing in the morning, and peak around commuting hours (8–9 AM and 5–6 PM).\n",
+        "\n",
+        "You can further visualize this with a line plot grouped by hour to confirm patterns.\n",
+        "\n",
+        " 5. Outliers\n",
+        "Detected outliers in columns like windspeed using the IQR method — they should be investigated or cleaned for modeling tasks.\n",
+        "\n",
+        " Final Thoughts:\n",
+        "Time (hour/month/weekday) and user type are critical dimensions for understanding and forecasting bike usage.\n",
+        "\n",
+        "Weather features affect behavior but to a lesser extent.\n",
+        "\n",
+        "This dataset is well-suited for building predictive models for bike demand using regression or time-series methods."
+      ],
+      "metadata": {
+        "id": "VZ66H5SUty19"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Q.16 In which season (Spring, Summer, Fall, Winter) people rented bikes the most?"
+      ],
+      "metadata": {
+        "id": "iMGro15Q5WhF"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Map numeric season to names\n",
+        "season_map = {1: 'Spring', 2: 'Summer', 3: 'Fall', 4: 'Winter'}\n",
+        "df['season_name'] = df['season'].map(season_map)\n",
+        "\n",
+        "# Group by season and sum the total bike rentals\n",
+        "season_rentals = df.groupby('season_name')['cnt'].sum().sort_values(ascending=False)\n",
+        "\n",
+        "# Display results\n",
+        "print(\"Total bike rentals by season:\\n\")\n",
+        "print(season_rentals)\n"
+      ],
+      "metadata": {
+        "id": "KhlVV_bK5jxm",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 0
+        },
+        "outputId": "19d68ad4-31ce-485b-f204-888e8913acfd"
+      },
+      "execution_count": 25,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Total bike rentals by season:\n",
+            "\n",
+            "season_name\n",
+            "Fall      1061129\n",
+            "Summer     918589\n",
+            "Winter     841613\n",
+            "Spring     471348\n",
+            "Name: cnt, dtype: int64\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Q.17 What is the peak hour in which bike rents the most?"
+      ],
+      "metadata": {
+        "id": "eudb_1Lb5sVc"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Group by hour and sum total bike rentals\n",
+        "hourly_rentals = df.groupby('hr')['cnt'].sum()\n",
+        "\n",
+        "# Find the hour with the maximum rentals\n",
+        "peak_hour = hourly_rentals.idxmax()\n",
+        "peak_rentals = hourly_rentals.max()\n",
+        "\n",
+        "print(f\"Peak hour: {peak_hour}:00 with {peak_rentals} rentals\")\n"
+      ],
+      "metadata": {
+        "id": "p0xSgv8g50yt",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 0
+        },
+        "outputId": "22c85551-1dd0-499d-8703-d9273f39495c"
+      },
+      "execution_count": 26,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Peak hour: 17:00 with 336860 rentals\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Q.18 In which day of a week bikes rents out most?"
+      ],
+      "metadata": {
+        "id": "y7rArqGQ6ji4"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Map weekday numbers to names\n",
+        "weekday_map = {0: 'Sunday', 1: 'Monday', 2: 'Tuesday', 3: 'Wednesday',\n",
+        "               4: 'Thursday', 5: 'Friday', 6: 'Saturday'}\n",
+        "\n",
+        "df['weekday_name'] = df['weekday'].map(weekday_map)\n",
+        "\n",
+        "# Sum bike rentals by weekday\n",
+        "weekday_rentals = df.groupby('weekday_name')['cnt'].sum()\n",
+        "\n",
+        "# Sort by rental counts descending to find the day with most rentals\n",
+        "weekday_rentals = weekday_rentals.sort_values(ascending=False)\n",
+        "\n",
+        "print(\"Total bike rentals by day of the week:\\n\")\n",
+        "print(weekday_rentals)\n",
+        "print(f\"\\nDay with most bike rentals: {weekday_rentals.idxmax()}\")\n"
+      ],
+      "metadata": {
+        "id": "6GPCbpsx6oYE",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 0
+        },
+        "outputId": "93094403-e991-4cdd-fa45-5cd79cdb6242"
+      },
+      "execution_count": 27,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Total bike rentals by day of the week:\n",
+            "\n",
+            "weekday_name\n",
+            "Friday       487790\n",
+            "Thursday     485395\n",
+            "Saturday     477807\n",
+            "Wednesday    473048\n",
+            "Tuesday      469109\n",
+            "Monday       455503\n",
+            "Sunday       444027\n",
+            "Name: cnt, dtype: int64\n",
+            "\n",
+            "Day with most bike rentals: Friday\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Q.19 In which hour Casual users rents bikes the most?"
+      ],
+      "metadata": {
+        "id": "bFO_Twk66qw-"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Group by hour and sum casual user rentals\n",
+        "casual_hourly = df.groupby('hr')['casual'].sum()\n",
+        "\n",
+        "# Find the hour with maximum casual rentals\n",
+        "peak_casual_hour = casual_hourly.idxmax()\n",
+        "peak_casual_rentals = casual_hourly.max()\n",
+        "\n",
+        "print(f\"Peak hour for casual users: {peak_casual_hour}:00 with {peak_casual_rentals} rentals\")\n"
+      ],
+      "metadata": {
+        "id": "59CHoEUt66GR",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 0
+        },
+        "outputId": "c9cbf30a-4861-4d4c-9db3-3623ca9ca8ba"
+      },
+      "execution_count": 28,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Peak hour for casual users: 14:00 with 55089 rentals\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Q.20 What is the maximum temperature observed in each of the seasons?"
+      ],
+      "metadata": {
+        "id": "wtvgNN-U69rh"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Using the 'season_name' column we created earlier\n",
+        "\n",
+        "# Find max temperature for each season\n",
+        "max_temp_by_season = df.groupby('season_name')['temp'].max()\n",
+        "\n",
+        "print(\"Maximum normalized temperature observed in each season:\")\n",
+        "print(max_temp_by_season)\n"
+      ],
+      "metadata": {
+        "id": "U_NwDHv57tLT",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 0
+        },
+        "outputId": "717a9ebb-fae6-4ce9-c67e-b3b89f887271"
+      },
+      "execution_count": 29,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Maximum normalized temperature observed in each season:\n",
+            "season_name\n",
+            "Fall      1.00\n",
+            "Spring    0.72\n",
+            "Summer    0.94\n",
+            "Winter    0.76\n",
+            "Name: temp, dtype: float64\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
